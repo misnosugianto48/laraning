@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('file_path');
             $table->integer('score')->nullable();
             $table->timestamps();
+                        $table->softDeletes();
+
         });
     }
 
