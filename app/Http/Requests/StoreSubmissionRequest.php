@@ -11,7 +11,7 @@ class StoreSubmissionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreSubmissionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'assignment_id' => 'required|exists:assignments,id',
+            'file_path' => 'required|mimes:pdf|max:2048'
         ];
     }
 }

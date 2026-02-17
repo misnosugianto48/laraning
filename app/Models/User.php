@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return parent::belongsToMany(Course::class, 'course_student', 'student_id', 'course_id');
     }
+
+    public function submissions(): HasMany
+    {
+        return parent::hasMany(Submission::class, 'student_id', 'id');
+    }
 }

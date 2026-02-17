@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\AssignmentController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\MaterialController;
+use App\Http\Controllers\Api\SubmissionController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,12 +38,29 @@ Route::group(['prefix' => 'v1'], function () {
         Route::middleware(['auth:sanctum', 'ability:lecturer'])->group(function () {
             Route::get('/', 'index');
             Route::post('/', 'store');
-            Route::put('/{material}', 'update');
-            Route::delete('/{material}', 'destroy');
         });
 
         Route::middleware(['auth:sanctum', 'ability:student'])->group(function () {
             Route::get('/{material}/download', 'download');
+        });
+    });
+
+    Route::prefix('assignments')->controller(AssignmentController::class)->group(function () {
+
+        Route::middleware(['auth:sanctum', 'ability:lecturer'])->group(function () {
+            Route::get('/', 'index');
+            Route::post('/', 'store');
+        });
+    });
+
+    Route::prefix('submissions')->controller(SubmissionController::class)->group(function () {
+
+        Route::middleware(['auth:sanctum', 'ability:student'])->group(function () {
+            Route::post('/', 'store');
+        });
+
+        Route::middleware(['auth:sanctum', 'ability:lecturer'])->group(function () {
+            Route::put('/{submission}/grade', 'update');
         });
     });
 });

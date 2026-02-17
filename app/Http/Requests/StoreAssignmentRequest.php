@@ -11,7 +11,7 @@ class StoreAssignmentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreAssignmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'course_id' => 'required|exists:courses,id',
+            'title' => 'required|string',
+            'description' => 'required',
+            'deadline' => 'required|date_format:Y-m-d H:i:s|after_or_equal:' . date(DATE_ATOM),
         ];
     }
 }

@@ -17,7 +17,7 @@ class MaterialController extends Controller
     {
         $material = Material::with('course:id,name')->get();
 
-        return $material;
+        return response()->json(['success' => true, 'message' => 'list all materials', 'data' => $material], 200);
     }
 
     /**
@@ -36,7 +36,7 @@ class MaterialController extends Controller
         $data = $request->safe()->all();
 
         if ($request->hasFile('file_path')) {
-            $path = Storage::putFile('materials', $request->file('file_path'));
+            $path = Storage::disk('public')->putFile('materials', $request->file('file_path'), 'public');
         }
 
         Material::create([
