@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Laravel\Sanctum\PersonalAccessToken;
+
+use function Pest\Laravel\json;
 
 class CourseController extends Controller
 {
@@ -14,12 +19,36 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::with('lecturer:id,name')->get();
 
         return response()->json([
             'success' => true,
             'message' => 'list all courses',
             'data' => $courses
+        ], 200);
+    }
+
+    public function indexTrash()
+    {
+        $courses = Course::onlyTrashed()->with('lecturer:id,name')->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'list all trash courses',
+            'data' => $courses
+        ], 200);
+    }
+
+    public function indexEnroll()
+    {
+        $users = User::where('role', 'student')
+            ->with('hasCourse')
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'list enroll courses',
+            'data' => $users
         ], 200);
     }
 
@@ -36,7 +65,38 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        //
+        $data = $request->safe()->all();
+        Course::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'lecturer_id' => $data['lecturer_id']
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'create courses successfully'
+        ], 201);
+    }
+
+    public function enroll(Request $request, $id)
+    {
+        $course = Course::find($id);
+
+        if (!$course) {
+            return response()->json([
+                'success' => false,
+                'message' => 'not found'
+            ], 404);
+        }
+
+        $user = $request->user();
+
+        $course->students()->syncWithoutDetaching($user->id);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'enroll courses successfully'
+        ], 201);
     }
 
     /**
@@ -58,16 +118,50 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCourseRequest $request, Course $courses)
+    public function update(UpdateCourseRequest $request, $id)
     {
-        //
+        $course = Course::find($id);
+
+        if (!$course) {
+            return response()->json([
+                'success' => false,
+                'message' => 'not found'
+            ], 404);
+        }
+
+        $data = $request->safe()->all();
+
+        $course->name = $data['name'];
+        $course->description = $data['description'];
+        $course->lecturer_id = $data['lecturer_id'];
+
+        $course->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'update courses successfully'
+        ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Course $courses)
+    public function destroy($id)
     {
-        //
+        $course = Course::find($id);
+
+        if (!$course) {
+            return response()->json([
+                'success' => false,
+                'message' => 'not found'
+            ], 404);
+        }
+
+        $course->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'delete courses successfully'
+        ], 200);
     }
 }

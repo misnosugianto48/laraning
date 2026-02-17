@@ -58,6 +58,6 @@ class User extends Authenticatable
 
     public function hasCourse(): BelongsToMany
     {
-        return parent::belongsToMany(Course::class, 'course_student');
+        return parent::belongsToMany(Course::class, 'course_student', 'student_id', 'course_id');
     }
 }

@@ -15,15 +15,17 @@ Route::group(['prefix' => 'v1'], function () {
     Route::prefix('courses')->controller(CourseController::class)->group(function () {
         Route::middleware(['auth:sanctum', 'ability:view'])->group(function () {
             Route::get('/', 'index');
+            Route::get('/trash', 'indexTrash');
         });
 
         Route::middleware(['auth:sanctum', 'ability:lecturer'])->group(function () {
             Route::post('/', 'store');
-            Route::put('/{course}', 'edit');
+            Route::put('/{course}', 'update');
             Route::delete('/{course}', 'destroy');
         });
 
         Route::middleware(['auth:sanctum', 'ability:student'])->group(function () {
+            Route::get('/enroll', 'indexEnroll');
             Route::post('/{course}/enroll', 'enroll');
         });
     });
