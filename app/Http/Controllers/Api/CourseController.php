@@ -8,9 +8,6 @@ use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Laravel\Sanctum\PersonalAccessToken;
-
-use function Pest\Laravel\json;
 
 class CourseController extends Controller
 {
