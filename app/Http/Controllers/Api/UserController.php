@@ -57,16 +57,40 @@ class UserController extends Controller
         $data = $request->safe()->all();
         $user = User::where('email', $data['email'])->first();
 
-        $comparePassword = Hash::check($data['password'], $user->password);
-
-        if (!$user ||  !$comparePassword) {
+        if (!$user) {
             return response()->json([
                 'success' => false,
                 'message' => 'invalid credentials'
             ], 401);
         }
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $comparePassword = Hash::check($data['password'], $user->password);
+
+        if (!$comparePassword) {
+            return response()->json([
+                'success' => false,
+                'message' => 'invalid credentials'
+            ], 401);
+        }
+
+        $lectureAbility = [
+            'lecturer',
+            'view',
+            'all'
+        ];
+
+        $studentAbility = [
+            'student',
+            'view',
+            'all'
+        ];
+
+        if ($user->role == 'lecturer') {
+            $token = $user->createToken('auth_token', $lectureAbility)->plainTextToken;
+        } else {
+
+            $token = $user->createToken('auth_token', $studentAbility)->plainTextToken;
+        }
 
         return response()->json([
             'success' => true,
@@ -94,9 +118,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(Request $request)
     {
-        $user->tokens()->delete();
+
+        $request->user()->currentAccessToken()->delete();
 
         return response()->json([
             'success' => true,
