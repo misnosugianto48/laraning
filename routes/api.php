@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AssignmentController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\DiscussionController;
 use App\Http\Controllers\Api\MaterialController;
+use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\SubmissionController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -71,6 +72,15 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('/', 'index');
             Route::post('/', 'store');
             Route::post('/{discussion}/replies', 'reply');
+        });
+    });
+
+    Route::prefix('reports')->controller(ReportController::class)->group(function () {
+
+        Route::middleware(['auth:sanctum', 'ability:all'])->group(function () {
+            Route::get('/courses', 'courses');
+            Route::get('/assignments', 'assignments');
+            Route::get('/students/{student}', 'student');
         });
     });
 });

@@ -16,7 +16,13 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::with('lecturer:id,name')->get();
+        $courses = Course::with([
+            'lecturer:id,name',
+            'students:id,name',
+            'materials:id,title,file_path,course_id',
+            'assignments:id,title,course_id',
+            'discussions:id,content,course_id'
+        ])->get();
 
         return response()->json([
             'success' => true,
