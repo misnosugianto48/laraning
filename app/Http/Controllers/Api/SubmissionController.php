@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSubmissionRequest;
 use App\Http\Requests\UpdateSubmissionRequest;
 use App\Models\Submission;
 use Illuminate\Support\Facades\Storage;
+use Resend\Laravel\Facades\Resend;
 
 class SubmissionController extends Controller
 {
@@ -85,6 +86,13 @@ class SubmissionController extends Controller
 
         $submission->score = $data['score'];
         $submission->save();
+
+        Resend::emails()->send([
+            'from' => 'Admin <admin@devmisno.web.id>',
+            'to' => [$request->user()->email],
+            'subject' => 'new grading',
+            'html' => '<p>New grade from submission ' . $submission->score . '</p>',
+        ]);
 
         return response()->json([
             'success' => true,

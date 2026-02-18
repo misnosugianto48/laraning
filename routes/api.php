@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AssignmentController;
 use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\DiscussionController;
 use App\Http\Controllers\Api\MaterialController;
 use App\Http\Controllers\Api\SubmissionController;
 use App\Http\Controllers\Api\UserController;
@@ -61,6 +62,15 @@ Route::group(['prefix' => 'v1'], function () {
 
         Route::middleware(['auth:sanctum', 'ability:lecturer'])->group(function () {
             Route::put('/{submission}/grade', 'update');
+        });
+    });
+
+    Route::prefix('discussions')->controller(DiscussionController::class)->group(function () {
+
+        Route::middleware(['auth:sanctum', 'ability:all'])->group(function () {
+            Route::get('/', 'index');
+            Route::post('/', 'store');
+            Route::post('/{discussion}/replies', 'reply');
         });
     });
 });

@@ -65,4 +65,14 @@ class User extends Authenticatable
     {
         return parent::hasMany(Submission::class, 'student_id', 'id');
     }
+
+    public function hasDiscussion(): HasMany
+    {
+        return parent::hasMany(Discussion::class, 'user_id', 'id');
+    }
+
+    public function hasReply(): HasMany
+    {
+        return parent::hasMany(Reply::class, 'user_id', 'id');
+    }
 }

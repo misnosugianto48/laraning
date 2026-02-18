@@ -44,4 +44,9 @@ class Course extends Model
     {
         return parent::hasMany(Assignment::class, 'course_id', 'id');
     }
+
+    public function discussions()
+    {
+        return parent::hasMany(Discussion::class, 'course_id', 'id');
+    }
 }
