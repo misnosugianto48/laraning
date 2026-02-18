@@ -1,0 +1,972 @@
+{
+  "info": {
+    "name": "Laraning",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|8LDev8xm4IgiHdxsM8szkLprrUq8gjHACv2iv2ct1ccdfa8c",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/logout",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "logout"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\" :\"misno48.sugianto@devmisno.web.id\",\n  \"password\" :\"Aquarius1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/login",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "login"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\" :\"misno48.sugianto@devmisno.web.id\",\n  \"password\" :\"Aquarius1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/register",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "register"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\" : \"Misno Sugianto\",\n  \"email\" : \"misno48.sugianto@devmisno.web.id\",\n  \"password\": \"Aquarius1\",\n  \"role\": \"lecturer\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "Get Course",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/courses",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "courses"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Create Course",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/courses",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "courses"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Davinci\",\n  \"description\": \"Belajar Jadi Edit\",\n  \"lecturer_id\": 1\n} ",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Update Course",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/courses/1",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "courses",
+                "1"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rekayasa Jaringan Dasar\",\n  \"description\": \"Belajar dasar rekayasa jadi heker\",\n  \"lecturer_id\": 1\n} ",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete Course",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/courses/1",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "courses",
+                "1"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Enroll Course",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "2|rXSA1Jm2AVIIH2npWy9HBJe7YfkoOUtDafdN7mgnc6697b03",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/courses/2/enroll",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "courses",
+                "2",
+                "enroll"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Get Trash Courses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/courses/trash",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "courses",
+                "trash"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Get Course Enroll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "2|rXSA1Jm2AVIIH2npWy9HBJe7YfkoOUtDafdN7mgnc6697b03",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/courses/enroll",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "courses",
+                "enroll"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Materials",
+      "item": [
+        {
+          "name": "Upload Material",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/materials",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "materials"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "materi pertama",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "course_id",
+                  "value": "2",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "file_path",
+                  "value": [
+                    "/home/misno48/Documents/JADWAL UJIAN AKHIR SEMESTER GANJIL TA. 2024 2025.pdf"
+                  ],
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Material",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/materials",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "materials"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Download Material",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "2|rXSA1Jm2AVIIH2npWy9HBJe7YfkoOUtDafdN7mgnc6697b03",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/materials/3/download",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "materials",
+                "3",
+                "download"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Assignments",
+      "item": [
+        {
+          "name": "Create Assignment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/assignments",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "assignments"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "course_id",
+                  "value": "2",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "title",
+                  "value": "tugas pertama",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "description",
+                  "value": "1. isi ini ya",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "deadline",
+                  "value": "2026-02-22 23:59:59",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Assignt",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/assignments",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "assignments"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Upload Submission",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "2|rXSA1Jm2AVIIH2npWy9HBJe7YfkoOUtDafdN7mgnc6697b03",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/submissions",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "submissions"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "assignment_id",
+                  "value": "1",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "file_path",
+                  "value": [
+                    "/home/misno48/Documents/JADWAL UJIAN AKHIR SEMESTER GANJIL TA. 2024 2025.pdf"
+                  ],
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Grade Submission",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/submissions/2/grade",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "submissions",
+                "2",
+                "grade"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"score\" : 80\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Forum",
+      "item": [
+        {
+          "name": "Discussion",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/discussions/",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "discussions",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "course_id",
+                  "value": "2",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "content",
+                  "value": "ini content diskusi",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Discussion Reply",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/discussions/1/replies",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "discussions",
+                "1",
+                "replies"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "discussion_id",
+                  "value": "1",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "content",
+                  "value": "ini content diskusi",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Discussion",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/discussions/",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "discussions",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "discussion_id",
+                  "value": "1",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "content",
+                  "value": "ini content diskusi",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Report Course",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/reports/courses",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "reports",
+                "courses"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "discussion_id",
+                  "value": "1",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "content",
+                  "value": "ini content diskusi",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Report Assignment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/reports/assignments",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "reports",
+                "assignments"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "discussion_id",
+                  "value": "1",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "content",
+                  "value": "ini content diskusi",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Report Student Spec",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "1|IihkMf9pcLikl48pd1DfiEXXdQs7OWDxr2bu1qGa80c2977b",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:8000/api/v1/reports/students/2",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "reports",
+                "students",
+                "2"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "discussion_id",
+                  "value": "1",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "content",
+                  "value": "ini content diskusi",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "lecture-token",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

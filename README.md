@@ -3,7 +3,6 @@
 
 Laravel E Learning. API Manajemen Kampus Simple
 
-
 ## Requirements
 
 Pastikan sudah terinstall:
@@ -119,6 +118,12 @@ php artisan serve
 
 ---
 
+### Test Endpoint
+
+import file laraning.json yang ada di project ke dalam collection postman. Silahkan test endpoint
+
+---
+
 ## Useful Commands
 
 Clear cache:
@@ -144,8 +149,8 @@ php artisan migrate:fresh --seed
 ## Default Login
 
 ```php
-Email: admin@example.com
-Password: password
+Email: admin@laraning.com
+Password: PasswordQwert
 ```
 
 ---
